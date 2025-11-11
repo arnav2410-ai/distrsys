@@ -1,23 +1,4 @@
 #!/usr/bin/env python3
-"""
-Simple MPI parallel log analyser without os/glob.
-
-Usage examples:
-
-# Using a manifest file listing paths (one per line):
-# First create manifest: ls sample_logs/*.log > manifest.txt
-mpirun -np 4 python3 parallel_log_analyser.py manifest.txt
-
-# Using a pattern with {n} and count:
-mpirun -np 4 python3 parallel_log_analyser.py "./sample_logs/node{n}.log" --count 10
-
-# Skip the built-in sequential baseline timing:
-mpirun -np 4 python3 parallel_log_analyser.py manifest.txt --no-seq
-
-Notes:
-- Requires mpi4py: pip3 install mpi4py
-- The script intentionally avoids using os, glob, pathlib, etc.
-"""
 from mpi4py import MPI
 import sys
 import time
@@ -178,4 +159,5 @@ def main(argv):
 
 if __name__ == "__main__":
     main(sys.argv[1:])
+
  
